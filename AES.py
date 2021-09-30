@@ -48,6 +48,9 @@ class AES:
         self.key = key
         self.mode = mode
         self.iv = iv
+        if self.mode != 'ECB' and len(iv) != 16:
+            print('iv value error')
+            exit(0)
         self.__round = 2 * len(self.key) // 8 + 6  # set different round by different length keys
         self.__col = len(self.key) // 4  # with the same row, different length keys have different columns.
         self.__keys = None
